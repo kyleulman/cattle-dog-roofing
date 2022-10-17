@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=block');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+	/* MONOCHROME */
+	--clr-dark-0: #222222;
+	--clr-dark-transparent: rgba(34, 34, 34, 0.97);
+	--clr-dark-1: #333333;
+	--clr-dark-2: #444444;
+	--clr-label: #797979;
+	--clr-lightish: #ccc;
+	--clr-light: #ffffff;
+
+	/* COLORS */
+	--clr-primary: #fc6a01;
+	--clr-primary: rgb(252, 106, 1);
+	--clr-primary-light: #fd964c;
+	--clr-secondary: #12b065;
+	--clr-secondary-light: #4cbd88;
+	--clr-secondary-dark: #0c7d48;
+	--clr-success: #19fc91;
+
+	--clr-error: #fc3719;
+
+	/* GRADIENTS */
+	--clr-secondary-gradient: linear-gradient(#0c7d48, #12b065, #4cbd88);
+
+	/* TEXT */
+	--ff-primary: 'Inter', sans-serif;
+	--fs-small: 0.8rem;
+}
+
+/* ::selection {
+	background-color: var(--clr-primary);
+	color: var(--clr-light);
+} */
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: 1.5rem;
+}
+@media (min-width: 1921px) {
+	html {
+		font-size: 2rem;
+	}
+}
+
+body {
+	margin: 0;
+	background: var(--clr-dark-0);
+	color: var(--clr-light);
+	font-family: var(--ff-primary);
+	line-height: 1.6;
+}
+
+/* * Text * */
+a {
+	color: var(--clr-light);
+}
+
+p a {
+	color: var(--clr-lightish);
+}
+
+p a:hover {
+	color: var(--clr-light);
+}
+
+p {
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1;
+}
+.small {
+	font-size: var(--fs-small);
+}
+
+.text-clr-primary {
+	color: var(--clr-primary);
+}
+
+.cover {
+	font-size: clamp(2rem, 10vw, 7rem);
+	color: var(--clr-primary);
+	letter-spacing: -4px;
+}
+@media (max-width: 1200px) {
+	.cover {
+		letter-spacing: -2px;
+		line-height: 1.15;
+	}
+}
+
+.hd {
+	line-height: 1;
+	font-weight: 700;
+}
+.hd-lg {
+	font-size: clamp(1rem, 8vw, 5rem);
+}
+.hd-md {
+	font-size: clamp(1rem, 8vw, 3.5rem);
+}
+.hd-sm {
+	font-size: clamp(1rem, 8vw, 1.5rem);
+}
+.bd-sm {
+	font-size: 0.7rem;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+}
+ul > li {
+	display: flex;
+	align-items: flex-start;
+	margin: 0.5em 0;
+}
+ul > li::before {
+	content: 'check';
+	font-family: 'material icons';
+	font-size: 1.5em;
+	color: var(--clr-primary);
+	line-height: 1;
+	margin-right: 0.25rem;
+}
+
+/* *** Form *** */
+input,
+textarea,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+input,
+textarea {
+	resize: none;
+	border: 0;
+	border-radius: 4px;
+	background: #eff0f6;
+	padding: 12px 1rem;
+	width: 100%;
+}
+label {
+	font-size: 0.7rem;
+	margin-bottom: 4px;
+	color: #797979;
+}
+
+/* * Layout * */
+figure {
+	margin: 0;
+}
+figcaption {
+	text-align: center;
+	font-weight: 300;
+	font-size: 0.7rem;
+	font-style: italic;
+	color: var(--clr-primary-light);
+}
+img {
+	max-width: 100%;
+	border-radius: 0.25rem;
+}
+
+.max500 {
+	max-width: 500px;
+}
+.max900 {
+	max-width: 900px;
+}
+
+.text-center {
+	text-align: center;
+}
+/*
+* Article content with vertical spacing
+*/
+article.vert {
+	display: flex;
+	flex-flow: column;
+	gap: 1rem;
+}
+/* * ***
+TODO <a> becomes a block element with a flex parent.
+TODO I self-aligned it to avoid this behavior.
+* *** */
+article > .offset {
+	align-self: center;
+}
+
+/*
+* Content is centered in its parent and spaced vertically *
+*/
+.content-centered {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	gap: 1rem;
+	text-align: center;
+}
+
+/*
+* Content is spaced evenly in a row
+* with a set minimum amount of space between.
+* Content will stack and reorder at a specified breakpoint,
+* articles will be ordered after images,
+* with vertical spacing between content.
+*/
+.space-evenly {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 1rem;
+}
+.space-evenly > figure {
+	width: 100%;
+}
+@media (max-width: 1200px) {
+	.space-evenly {
+		flex-flow: column;
+	}
+	.space-evenly > figure {
+		order: 1;
+	}
+	.space-evenly > article {
+		order: 2;
+	}
+}
+
+/*
+* Space between
+*/
+.space-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+/*
+* 1:2 Row split *
+*/
+.one-two {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+.one-two > *:first-child {
+	flex: 1;
+}
+.one-two > *:last-child {
+	flex: 2;
+}
+.one-two > figure {
+	width: 100%;
+}
+@media (max-width: 1200px) {
+	.one-two {
+		flex-flow: column;
+		align-items: center;
+	}
+	.one-two > figure {
+		order: 1;
+	}
+	.one-two > article {
+		order: 2;
+	}
+}
+
+/*
+* 1:1 Row split *
+*/
+.one-one {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+}
+.one-one > * {
+	flex: 1;
+}
+.one-one > figure {
+	width: 100%;
+	text-align: center;
+}
+@media (max-width: 1200px) {
+	.one-one {
+		flex-flow: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	.one-one > figure {
+		order: 1;
+	}
+	.one-one > article {
+		order: 2;
+	}
+}
+
+/* * Container for dynamic content */
+.ck {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.ck * {
+	/* These are technically the same, but use both */
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
